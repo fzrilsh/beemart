@@ -17,6 +17,8 @@ builder.Services.AddDbContext<BeeMartDbContext>(options =>
 
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<InvoiceLockRepository>();
+builder.Services.AddScoped<InvoiceService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddSingleton<JwtTokenService>();
 
