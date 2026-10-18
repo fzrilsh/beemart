@@ -1,0 +1,37 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# Test results
+[Tt]est[Rr]esult*/
+*.trx
+
+# Publish
+[Pp]ublish/
+*.publishsettings
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+
+# Node (frontend tooling if any)
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
