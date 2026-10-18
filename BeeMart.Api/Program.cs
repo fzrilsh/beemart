@@ -20,6 +20,7 @@ builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<InvoiceLockRepository>();
 builder.Services.AddScoped<InvoiceService>();
 builder.Services.AddScoped<TransactionService>();
+builder.Services.AddScoped<HistoryService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddSingleton<JwtTokenService>();
 
