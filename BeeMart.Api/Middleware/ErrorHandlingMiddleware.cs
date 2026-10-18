@@ -49,6 +49,7 @@ public class ErrorHandlingMiddleware
         context.Response.StatusCode = status;
         context.Response.ContentType = "application/json";
         var payload = new ErrorResponse(code, message, null);
-        await context.Response.WriteAsync(JsonSerializer.Serialize(payload));
+        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        await context.Response.WriteAsync(json);
     }
 }

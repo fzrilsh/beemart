@@ -1,0 +1,106 @@
+@page
+@model BeeMart.WebClient.Pages.TransactionModel
+@{
+    ViewData["Title"] = "New Transaction";
+}
+
+<header class="app-header">
+    <div class="brand">BeeMart</div>
+    <div class="session-info">
+        <span id="sessionInfo">@Model.SessionText</span>
+        <a class="btn btn-danger" href="/Logout">Logout</a>
+    </div>
+</header>
+
+<main class="app-main">
+    <section class="panel">
+        <nav class="tabs">
+            <a class="tab is-active" href="/Transaction">New Transaction</a>
+            <a class="tab" href="/History">History Transaction</a>
+        </nav>
+
+        <div class="invoice-banner" id="invoiceBanner">Invoice No: memuat...</div>
+
+        <label class="search-label" for="searchInput">Cari Barang (Ketik: Apel / Susu, lalu tekan Enter)</label>
+        <input type="text" id="searchInput" class="search-input" placeholder="Ketik nama barang..." autocomplete="off" />
+        <p class="search-hint" id="searchHint"></p>
+
+        <div class="table-wrap">
+            <table class="grid" id="searchResultTable">
+                <thead>
+                    <tr>
+                        <th>Nama Barang</th>
+                        <th>Berat</th>
+                        <th>Stock</th>
+                        <th>Harga</th>
+                        <th>Diskon</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="searchResultBody">
+                    <tr class="empty-row"><td colspan="6">Ketik nama barang lalu tekan Enter untuk mencari.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pick-panel hidden" id="pickPanel">
+            <p class="pick-title" id="pickTitle">Barang Terpilih:</p>
+            <div class="pick-row">
+                <div class="pick-meta">
+                    <span class="meta-label">Harga Satuan:</span>
+                    <span class="meta-value" id="pickPrice">Rp 0</span>
+                </div>
+                <div class="pick-meta">
+                    <span class="meta-label">Sisa Stock:</span>
+                    <span class="meta-value" id="pickStock">0</span>
+                </div>
+                <div class="pick-meta">
+                    <label class="meta-label" for="pickQty">Qty:</label>
+                    <input type="number" id="pickQty" class="qty-input" min="1" step="1" value="1" />
+                </div>
+                <button type="button" class="btn" id="addToCartBtn">Masukkan ke Keranjang</button>
+            </div>
+            <p class="qty-error" id="qtyError"></p>
+        </div>
+
+        <h2 class="section-title">Daftar Belanjaan</h2>
+
+        <div class="table-wrap">
+            <table class="grid" id="cartTable">
+                <thead>
+                    <tr>
+                        <th>Nama Barang</th>
+                        <th>Harga</th>
+                        <th>Diskon</th>
+                        <th>Qty</th>
+                        <th>Subtotal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="cartBody">
+                    <tr class="empty-row"><td colspan="6">Belum ada barang di keranjang.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total-row">
+            <span class="total-value" id="cartTotal">Total: Rp 0</span>
+        </div>
+
+        <div class="payment-row">
+            <label for="paymentMethod">Metode Pembayaran:</label>
+            <select id="paymentMethod"></select>
+        </div>
+
+        <div class="submit-row">
+            <button type="button" class="btn btn-block" id="submitBtn">Submit Transaksi</button>
+        </div>
+    </section>
+</main>
+
+<div class="toast-stack" id="toastStack"></div>
+
+@section Scripts {
+    <script src="~/js/format.js" asp-append-version="true"></script>
+    <script src="~/js/transaction.js" asp-append-version="true"></script>
+}

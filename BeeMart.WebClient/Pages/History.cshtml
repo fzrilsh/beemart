@@ -1,0 +1,57 @@
+@page
+@model BeeMart.WebClient.Pages.HistoryModel
+@{
+    ViewData["Title"] = "History Transaction";
+}
+
+<header class="app-header">
+    <div class="brand">BeeMart</div>
+    <div class="session-info">
+        <span id="sessionInfo">@Model.SessionText</span>
+        <a class="btn btn-danger" href="/Logout">Logout</a>
+    </div>
+</header>
+
+<main class="app-main">
+    <section class="panel">
+        <nav class="tabs">
+            <a class="tab" href="/Transaction">New Transaction</a>
+            <a class="tab is-active" href="/History">History Transaction</a>
+        </nav>
+
+        <p class="history-note" id="historyNote"></p>
+
+        <div class="filter-row">
+            <label for="dateFilter">Pilih Tanggal:</label>
+            <input type="date" id="dateFilter" />
+            <button type="button" class="btn" id="searchBtn">Cari Data</button>
+        </div>
+
+        <div class="table-wrap">
+            <table class="grid" id="historyTable">
+                <thead>
+                    <tr>
+                        <th>No. Transaksi</th>
+                        <th>Tanggal &amp; Jam</th>
+                        <th>Kasir</th>
+                        <th>Jml Item</th>
+                        <th>Pembayaran</th>
+                        <th>Total Harga</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                    <tr class="empty-row"><td colspan="6">Pilih tanggal lalu klik Cari Data.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="pagination"></div>
+    </section>
+</main>
+
+<div class="toast-stack" id="toastStack"></div>
+
+@section Scripts {
+    <script src="~/js/format.js" asp-append-version="true"></script>
+    <script src="~/js/history.js" asp-append-version="true"></script>
+}

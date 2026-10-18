@@ -1,0 +1,56 @@
+@page
+@model BeeMart.WebClient.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<main class="auth-page">
+    <section class="auth-card">
+        <div class="auth-body">
+            <h1 class="auth-title">BeeMart Login</h1>
+
+            <div class="form-error @(Model.ErrorMessage is null ? "" : "is-visible") @(Model.SuccessMessage is null ? "" : "form-success is-visible")" id="formError">
+                @(Model.ErrorMessage ?? Model.SuccessMessage)
+            </div>
+
+            <form method="post" id="loginForm" novalidate>
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="Username" value="@Model.Username" autocomplete="username" />
+                    <div class="field-error"></div>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="Password" autocomplete="current-password" />
+                    <div class="field-error"></div>
+                </div>
+
+                <div class="field">
+                    <label for="role">Role</label>
+                    <select id="role" name="Role">
+                        @if (Model.Role == "Admin")
+                        {
+                            <option value="Cashier">Kasir</option>
+                            <option value="Admin" selected>Admin</option>
+                        }
+                        else
+                        {
+                            <option value="Cashier" selected>Kasir</option>
+                            <option value="Admin">Admin</option>
+                        }
+                    </select>
+                    <div class="field-error"></div>
+                </div>
+
+                <button type="submit" class="btn btn-block">Login</button>
+            </form>
+
+            <a class="auth-link" href="/Register">Belum punya akun? Register</a>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    <script src="~/js/login.js" asp-append-version="true"></script>
+}
