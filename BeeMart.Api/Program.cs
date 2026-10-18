@@ -16,6 +16,7 @@ builder.Services.AddDbContext<BeeMartDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BeeMartDb")));
 
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddSingleton<JwtTokenService>();
 
