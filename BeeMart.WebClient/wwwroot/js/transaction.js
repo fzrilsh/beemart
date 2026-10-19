@@ -2,6 +2,7 @@
     var invoiceBanner = document.getElementById("invoiceBanner");
     var searchInput = document.getElementById("searchInput");
     var searchHint = document.getElementById("searchHint");
+    var searchResultWrap = document.getElementById("searchResultWrap");
     var searchResultBody = document.getElementById("searchResultBody");
     var pickPanel = document.getElementById("pickPanel");
     var pickTitle = document.getElementById("pickTitle");
@@ -54,9 +55,7 @@
 
     function renderCart() {
         cartBody.textContent = "";
-        if (cartView.items.length === 0) {
-            cartBody.appendChild(emptyRow(6, "Belum ada barang di keranjang."));
-        } else {
+        if (cartView.items.length > 0) {
             cartView.items.forEach(function (item) {
                 var row = document.createElement("tr");
 
@@ -81,6 +80,7 @@
                 row.appendChild(subtotalCell);
 
                 var actionCell = document.createElement("td");
+                actionCell.className = "aksi";
                 var removeBtn = document.createElement("button");
                 removeBtn.type = "button";
                 removeBtn.className = "btn btn-danger";
@@ -129,6 +129,7 @@
 
     function renderSearchResults(results, keyword) {
         searchResultBody.textContent = "";
+        searchResultWrap.classList.remove("hidden");
         if (results.length === 0) {
             searchResultBody.appendChild(emptyRow(6, 'Tidak ada barang yang cocok dengan "' + keyword + '".'));
             return;
@@ -163,6 +164,7 @@
             row.appendChild(discountCell);
 
             var actionCell = document.createElement("td");
+            actionCell.className = "aksi";
             var pickBtn = document.createElement("button");
             pickBtn.type = "button";
             pickBtn.className = "btn btn-small";
@@ -193,15 +195,15 @@
         var trimmed = keyword.trim();
         hidePickPanel();
         if (!trimmed) {
-            searchHint.textContent = "Ketik nama barang lalu tekan Enter untuk mencari.";
+            searchHint.textContent = "";
             searchResultBody.textContent = "";
-            searchResultBody.appendChild(emptyRow(6, "Ketik nama barang lalu tekan Enter untuk mencari."));
+            searchResultWrap.classList.add("hidden");
             return;
         }
 
         callApi("/api/proxy/products/search?keyword=" + encodeURIComponent(trimmed))
             .then(function (results) {
-                searchHint.textContent = "Menampilkan " + results.length + ' hasil untuk "' + trimmed + '".';
+                searchHint.textContent = "";
                 renderSearchResults(results, trimmed);
             })
             .catch(function (err) {
@@ -287,7 +289,7 @@
         searchInput.value = "";
         searchHint.textContent = "";
         searchResultBody.textContent = "";
-        searchResultBody.appendChild(emptyRow(6, "Ketik nama barang lalu tekan Enter untuk mencari."));
+        searchResultWrap.classList.add("hidden");
         hidePickPanel();
         paymentMethod.selectedIndex = 0;
         loadInvoice();

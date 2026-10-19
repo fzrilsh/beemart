@@ -6,7 +6,9 @@ namespace BeeMart.WebClient.Pages;
 
 public class HistoryModel : PageModel
 {
-    public string SessionText { get; private set; } = string.Empty;
+    public string RoleLabel { get; private set; } = string.Empty;
+
+    public string Username { get; private set; } = string.Empty;
 
     public IActionResult OnGet()
     {
@@ -17,8 +19,8 @@ public class HistoryModel : PageModel
         }
 
         var role = Request.Cookies[SessionCookie.RoleName] ?? "Cashier";
-        var username = Request.Cookies[SessionCookie.UsernameName] ?? string.Empty;
-        SessionText = "Role: " + role + " | Login: " + username;
+        RoleLabel = role == "Admin" ? "Admin" : "Kasir";
+        Username = Request.Cookies[SessionCookie.UsernameName] ?? string.Empty;
         return Page();
     }
 }

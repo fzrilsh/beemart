@@ -7,7 +7,7 @@
 <header class="app-header">
     <div class="brand">BeeMart</div>
     <div class="session-info">
-        <span id="sessionInfo">@Model.SessionText</span>
+        <span id="sessionInfo">Role: <span class="role-value">@Model.RoleLabel</span> | Login: @Model.Username</span>
         <a class="btn btn-danger" href="/Logout">Logout</a>
     </div>
 </header>

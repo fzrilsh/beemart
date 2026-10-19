@@ -21,9 +21,9 @@
     var role = readCookie("beemart_role") || "Cashier";
     var username = readCookie("beemart_username");
     if (role === "Admin") {
-        historyNote.textContent = "Pencarian Data Transaksi (Menampilkan Semua Kasir)";
+        historyNote.innerHTML = 'Pencarian Data Transaksi <strong>(Menampilkan Semua Kasir)</strong>';
     } else {
-        historyNote.textContent = "Pencarian Data Transaksi (Hanya Kasir: " + username + ")";
+        historyNote.innerHTML = 'Pencarian Data Transaksi <strong>(Hanya Kasir: ' + username.replace(/[<>&]/g, "") + ")</strong>";
     }
 
     function showToast(message, type) {

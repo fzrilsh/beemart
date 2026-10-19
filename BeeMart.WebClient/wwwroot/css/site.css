@@ -157,8 +157,8 @@ a {
 
 .btn-danger {
   background: var(--red);
-  padding: 5px 12px;
-  font-size: 13px;
+  padding: 9px 18px;
+  font-size: 14px;
 }
 
 .btn-danger:hover {
@@ -363,6 +363,11 @@ table.grid .num {
   text-align: left;
 }
 
+table.grid th.aksi,
+table.grid td.aksi {
+  text-align: center;
+}
+
 .empty-row td {
   text-align: center;
   color: var(--text-muted);
@@ -416,6 +421,17 @@ table.grid .num {
 .pick-meta .meta-label {
   display: block;
   color: #555555;
+}
+
+.pick-meta.qty-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pick-meta .meta-label-inline {
+  color: #555555;
+  white-space: nowrap;
 }
 
 .pick-meta .meta-value {

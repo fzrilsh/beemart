@@ -17,8 +17,9 @@ public class TransactionModel : PageModel
         }
 
         var role = Request.Cookies[SessionCookie.RoleName] ?? "Cashier";
+        var roleLabel = role == "Admin" ? "Admin" : "Kasir";
         var username = Request.Cookies[SessionCookie.UsernameName] ?? string.Empty;
-        SessionText = DateTime.Now.ToString("d/M/yyyy, HH.mm.ss") + " | " + role + ": " + username;
+        SessionText = DateTime.Now.ToString("d/M/yyyy, HH.mm.ss") + " | " + roleLabel + ": " + username;
         return Page();
     }
 }
