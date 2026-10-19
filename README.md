@@ -15,3 +15,14 @@ Cara kerja singkat:
 5. Lock yang tanggalnya sudah lewat dihapus saat pengguna meminta invoice berikutnya.
 
 Lima tabel dari ERD tidak berubah: `MsUser`, `MsProduct`, `LtPaymentMethod`, `TrTransaction`, dan `TrTransactionDetail`. `TrInvoiceLock` hanya tabel tambahan untuk fitur ini.
+
+## Akun Awal
+
+Script SQL sudah memuat dua akun untuk pengujian:
+
+| Username | Password | Role |
+| --- | --- | --- |
+| `admin` | `admin123` | Admin |
+| `kasir1` | `kasir123` | Kasir |
+
+Akun baru juga bisa dibuat lewat halaman Register.

@@ -13,6 +13,7 @@ public static class DataSeeder
 
     public static async Task SeedAsync(BeeMartDbContext db, CancellationToken cancellationToken)
     {
+        await SeedUsersAsync(db, cancellationToken);
         await SeedPaymentMethodsAsync(db, cancellationToken);
 
         if (await db.Products.AnyAsync(cancellationToken))
@@ -43,6 +44,41 @@ public static class DataSeeder
                 Userin = "SYSTEM"
             });
         }
+
+        await db.SaveChangesAsync(cancellationToken);
+    }
+
+    private static async Task SeedUsersAsync(BeeMartDbContext db, CancellationToken cancellationToken)
+    {
+        if (await db.Users.AnyAsync(cancellationToken))
+        {
+            return;
+        }
+
+        var now = DateTime.Now;
+        db.Users.AddRange(
+            new User
+            {
+                IdUser = "11111",
+                Username = "admin",
+                FullName = "Administrator",
+                PasswordHash = "AQAAAAIAAYagAAAAEABFtwYe+jJe6SPFQabO71AA+wsChLE4TTHwZ13AW3R7v+14uF+ku4njJEz7qJrN/Q==",
+                Role = "Admin",
+                Stsrc = true,
+                Datein = now,
+                Userin = "SYSTEM"
+            },
+            new User
+            {
+                IdUser = "22222",
+                Username = "kasir1",
+                FullName = "Kasir Satu",
+                PasswordHash = "AQAAAAIAAYagAAAAEPgXRNqKUwgnvTGDkJdJE6goM4VN+opqY/Z4zKlv1TK36gryRKf9UbFAIiRSPbCmmw==",
+                Role = "Cashier",
+                Stsrc = true,
+                Datein = now,
+                Userin = "SYSTEM"
+            });
 
         await db.SaveChangesAsync(cancellationToken);
     }
