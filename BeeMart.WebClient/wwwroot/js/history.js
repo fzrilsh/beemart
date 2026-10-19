@@ -67,7 +67,7 @@
             tr.appendChild(dateCell);
 
             var cashierCell = document.createElement("td");
-            cashierCell.textContent = row.cashierName;
+            cashierCell.textContent = row.fullName;
             tr.appendChild(cashierCell);
 
             var itemCell = document.createElement("td");
@@ -75,11 +75,11 @@
             tr.appendChild(itemCell);
 
             var paymentCell = document.createElement("td");
-            paymentCell.textContent = row.paymentMethod;
+            paymentCell.textContent = row.methodName;
             tr.appendChild(paymentCell);
 
             var totalCell = document.createElement("td");
-            totalCell.textContent = BeeMartFormat.rupiah(row.total);
+            totalCell.textContent = BeeMartFormat.rupiah(row.totalPrice);
             tr.appendChild(totalCell);
 
             historyBody.appendChild(tr);

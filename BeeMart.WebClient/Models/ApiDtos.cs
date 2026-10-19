@@ -12,7 +12,7 @@ public record ProductDto(string IdProduct, string Name, decimal Weight, int Stoc
 
 public record PaymentMethodDto(int IdPaymentMethod, string MethodName);
 
-public record InvoiceLockResponse(string InvoiceNo, DateTime LockedAt, DateTime ExpiresAt);
+public record InvoiceLockResponse(string InvoiceNo, DateTime LockDate, DateTime ExpiresAt);
 
 public record CartItemRequest(string IdProduct, int Qty);
 
@@ -20,12 +20,12 @@ public record CartLineDto(string IdProduct, string Name, decimal Price, decimal 
 
 public record CalculateRequest(List<CartItemRequest> Items);
 
-public record CalculateResponse(List<CartLineDto> Items, decimal Total);
+public record CalculateResponse(List<CartLineDto> Items, decimal TotalPrice);
 
 public record SubmitTransactionRequest(string InvoiceNo, int IdPaymentMethod, List<CartItemRequest> Items);
 
-public record SubmitTransactionResponse(string InvoiceNo, DateTime TransactionDate, decimal Total);
+public record SubmitTransactionResponse(string InvoiceNo, DateTime TransactionDate, decimal TotalPrice);
 
-public record HistoryItemDto(string InvoiceNo, DateTime TransactionDate, string CashierName, int ItemCount, string PaymentMethod, decimal Total);
+public record HistoryItemDto(string InvoiceNo, DateTime TransactionDate, string FullName, int ItemCount, string MethodName, decimal TotalPrice);
 
 public record HistoryResponse(List<HistoryItemDto> Items, int Page, int PageSize, int TotalItems, int TotalPages);

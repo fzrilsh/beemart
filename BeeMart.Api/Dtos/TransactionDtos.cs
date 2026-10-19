@@ -6,8 +6,8 @@ public record CalculateRequest(List<CartItemRequest> Items);
 
 public record CartLineDto(string IdProduct, string Name, decimal Price, decimal Discount, int Qty, decimal SubTotal);
 
-public record CalculateResponse(List<CartLineDto> Items, decimal Total);
+public record CalculateResponse(List<CartLineDto> Items, decimal TotalPrice);
 
 public record SubmitTransactionRequest(string InvoiceNo, int IdPaymentMethod, List<CartItemRequest> Items);
 
-public record SubmitTransactionResponse(string InvoiceNo, DateTime TransactionDate, decimal Total);
+public record SubmitTransactionResponse(string InvoiceNo, DateTime TransactionDate, decimal TotalPrice);

@@ -17,7 +17,7 @@
 
     var selectedProduct = null;
     var cartItems = [];
-    var cartView = { items: [], total: 0 };
+    var cartView = { items: [], totalPrice: 0 };
     var currentInvoice = "";
 
     function showToast(message, type) {
@@ -98,12 +98,12 @@
                 cartBody.appendChild(row);
             });
         }
-        cartTotal.textContent = "Total: " + BeeMartFormat.rupiah(cartView.total);
+        cartTotal.textContent = "Total: " + BeeMartFormat.rupiah(cartView.totalPrice);
     }
 
     function refreshCart() {
         if (cartItems.length === 0) {
-            cartView = { items: [], total: 0 };
+            cartView = { items: [], totalPrice: 0 };
             renderCart();
             return;
         }
@@ -284,7 +284,7 @@
 
     function resetTransaction() {
         cartItems = [];
-        cartView = { items: [], total: 0 };
+        cartView = { items: [], totalPrice: 0 };
         renderCart();
         searchInput.value = "";
         searchHint.textContent = "";
