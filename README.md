@@ -16,7 +16,7 @@ Cara kerja singkat:
 
 Lima tabel dari ERD tidak berubah: `MsUser`, `MsProduct`, `LtPaymentMethod`, `TrTransaction`, dan `TrTransactionDetail`. `TrInvoiceLock` hanya tabel tambahan untuk fitur ini.
 
-## Akun Awal
+## Akun Dummy
 
 Script SQL sudah memuat dua akun untuk pengujian:
 
