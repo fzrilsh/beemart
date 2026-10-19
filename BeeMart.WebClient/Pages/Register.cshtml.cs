@@ -52,7 +52,7 @@ public class RegisterModel : PageModel
         try
         {
             await _api.RegisterAsync(new RegisterRequest(Username.Trim(), FullName.Trim(), Password, Role), cancellationToken);
-            return RedirectToPage("/Login", new { registered = true });
+            return RedirectToPage("/Login", new { registered = 1 });
         }
         catch (ApiException ex)
         {
