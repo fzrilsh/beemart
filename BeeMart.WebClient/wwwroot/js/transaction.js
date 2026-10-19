@@ -143,7 +143,7 @@
             row.appendChild(nameCell);
 
             var weightCell = document.createElement("td");
-            weightCell.textContent = BeeMartFormat.weight(product.weightGram);
+            weightCell.textContent = BeeMartFormat.weight(product.weight);
             row.appendChild(weightCell);
 
             var stockCell = document.createElement("td");
