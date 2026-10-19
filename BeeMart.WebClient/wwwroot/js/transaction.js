@@ -90,7 +90,6 @@
                         return entry.idProduct !== item.idProduct;
                     });
                     refreshCart();
-                    showToast(item.name + " dihapus dari keranjang.", "success");
                 });
                 actionCell.appendChild(removeBtn);
                 row.appendChild(actionCell);
@@ -246,7 +245,6 @@
                 renderCart();
                 qtyError.classList.remove("is-visible");
                 qtyError.textContent = "";
-                showToast(selectedProduct.name + " ditambahkan ke keranjang.", "success");
             })
             .catch(function (err) {
                 qtyError.textContent = err.message;
@@ -311,8 +309,7 @@
                 items: cartItems
             })
         })
-            .then(function (result) {
-                showToast("Transaksi " + result.invoiceNo + " berhasil disimpan.", "success");
+            .then(function () {
                 resetTransaction();
             })
             .catch(function (err) {
